@@ -2,6 +2,7 @@ package com.systex.demo.filter;
 
 import java.io.IOException;
 
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import jakarta.servlet.Filter;
@@ -18,12 +19,13 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebFilter("/*") // 設定過濾所有 URL
 @Component
-public class WFilter extends HttpFilter {
+@Order(1)
+public class Filter1 extends HttpFilter {
 	
 	/**
      * @see HttpFilter#HttpFilter()
      */
-    public WFilter() {
+    public Filter1() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -47,17 +49,21 @@ public class WFilter extends HttpFilter {
     	String user = (String)httpRequest.getSession().getAttribute("user");
     	
     	request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
     	
         if(httpRequest.getRequestURI().equals(httpRequest.getContextPath()+"/index.jsp") ||
            httpRequest.getRequestURI().equals(httpRequest.getContextPath()+"/loginForm")||
            httpRequest.getRequestURI().equals(httpRequest.getContextPath()+"/registerForm")||
            httpRequest.getRequestURI().equals(httpRequest.getContextPath()+"/login")||
            httpRequest.getRequestURI().equals(httpRequest.getContextPath()+"/register")||
+           httpRequest.getRequestURI().equals(httpRequest.getContextPath()+"/ajaxlogin")||
            httpRequest.getRequestURI().contains("/h2-console")) {
         	System.out.println("pass");
+
         	chain.doFilter(request, response); //把控制權還給container
         	return;
         }
+
         if(user!=null) {
         	System.out.println("pass");
         	chain.doFilter(request, response); //把控制權還給container
@@ -65,7 +71,6 @@ public class WFilter extends HttpFilter {
         }
         System.out.println("redirect");
         httpResponse.sendRedirect(httpRequest.getContextPath() + "/loginForm");
-        return;
         // pass the request along the filter chain
         
     }

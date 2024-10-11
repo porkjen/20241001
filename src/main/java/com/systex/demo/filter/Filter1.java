@@ -47,17 +47,20 @@ public class WFilter extends HttpFilter {
     	String user = (String)httpRequest.getSession().getAttribute("user");
     	
     	request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
     	
         if(httpRequest.getRequestURI().equals(httpRequest.getContextPath()+"/index.jsp") ||
            httpRequest.getRequestURI().equals(httpRequest.getContextPath()+"/loginForm")||
            httpRequest.getRequestURI().equals(httpRequest.getContextPath()+"/registerForm")||
            httpRequest.getRequestURI().equals(httpRequest.getContextPath()+"/login")||
            httpRequest.getRequestURI().equals(httpRequest.getContextPath()+"/register")||
+           httpRequest.getRequestURI().equals(httpRequest.getContextPath()+"/ajaxlogin")||
            httpRequest.getRequestURI().contains("/h2-console")) {
         	System.out.println("pass");
         	chain.doFilter(request, response); //把控制權還給container
         	return;
         }
+
         if(user!=null) {
         	System.out.println("pass");
         	chain.doFilter(request, response); //把控制權還給container
@@ -65,7 +68,6 @@ public class WFilter extends HttpFilter {
         }
         System.out.println("redirect");
         httpResponse.sendRedirect(httpRequest.getContextPath() + "/loginForm");
-        return;
         // pass the request along the filter chain
         
     }

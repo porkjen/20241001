@@ -18,7 +18,7 @@
         <a class="btn btn-success" href="logout" role="button">logout</a>
       </div>
 	</nav>
-	<div style="margin-top: 56px; text-align: center">
+	<div style="margin-top: 100px; text-align: center">
 		<h2 class="text-success" style="text-align:center">樂透號碼產生結果</h2>
 		<table border="0" style="margin:auto; text-align: center; width: 50%" class="table">
 			<tbody>

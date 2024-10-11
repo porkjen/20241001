@@ -19,7 +19,7 @@
         <a class="btn btn-success" href="logout" role="button">logout</a>
       </div>
 	</nav>
-	<div style="margin-top: 56px;">
+	<div style="margin-top: 100px;">
 		<h1 class="text-success" style="text-align:center">樂透選號</h1>
 		<%LinkedList<String> errors = (LinkedList<String>)request.getAttribute("errors"); %>
 			<%if(errors != null){ %>

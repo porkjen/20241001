@@ -17,7 +17,7 @@
         <a class="btn btn-success" href="logout" role="button">logout</a>
       </div>
 	</nav>
-	<div style="margin-top: 56px;">
+	<div style="margin-top: 100px;">
 		<h1 class="text-success" style="text-align: center;">註冊</h1>
 
 		<%String hint = (String)request.getSession().getAttribute("hint");%>

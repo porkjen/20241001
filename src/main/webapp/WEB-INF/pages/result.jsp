@@ -14,6 +14,9 @@
 	  <div class="container-fluid">
 	    <a class="navbar-brand" href="index.jsp">Lottery</a>
 	  </div>
+	  <div class="d-flex">
+        <a class="btn btn-success" href="logout" role="button">logout</a>
+      </div>
 	</nav>
 	<div style="margin-top: 56px; text-align: center">
 		<h2 class="text-success" style="text-align:center">樂透號碼產生結果</h2>

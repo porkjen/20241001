@@ -2,6 +2,7 @@ package com.systex.demo.filter;
 
 import java.io.IOException;
 
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import jakarta.servlet.Filter;
@@ -18,12 +19,13 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebFilter("/*") // 設定過濾所有 URL
 @Component
-public class WFilter extends HttpFilter {
+@Order(1)
+public class Filter1 extends HttpFilter {
 	
 	/**
      * @see HttpFilter#HttpFilter()
      */
-    public WFilter() {
+    public Filter1() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -57,6 +59,7 @@ public class WFilter extends HttpFilter {
            httpRequest.getRequestURI().equals(httpRequest.getContextPath()+"/ajaxlogin")||
            httpRequest.getRequestURI().contains("/h2-console")) {
         	System.out.println("pass");
+
         	chain.doFilter(request, response); //把控制權還給container
         	return;
         }
